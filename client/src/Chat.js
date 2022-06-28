@@ -34,14 +34,15 @@ useEffect(() => {
       <div className='chat-body'>
       {Messagelist.map((messagecontent)=>{
         return (
-        <div className='message'> 
+        <div className='message'
+        id={username === messagecontent.author ? "you" : "other"}> 
           <div> 
             <div className='message-content'>
              <p>{messagecontent.message}</p> 
             </div>
             <div className='message-meta'>
-              <p>{messagecontent.time}</p>
-              <p>{messagecontent.author}</p>
+              <p id="time">{messagecontent.time}</p>
+              <p id="author">{messagecontent.author}</p>
             </div>
           </div>
         </div> )
@@ -51,6 +52,9 @@ useEffect(() => {
         <input type="text" placeholder='Hey...' 
          onChange={(event)=>{
           setCurrentMessage(event.target.value)
+          }}
+          onKeyPress={(event) =>{
+            event.key === "Enter" && sendMessage()
           }}
         />
         <button onClick={sendMessage}>&#9658;</button>
