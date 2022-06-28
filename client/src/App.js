@@ -2,6 +2,8 @@ import './App.css';
 
 import io, { Socket } from "socket.io-client"
 import {useState} from 'react'
+import Chats from './Chats';
+
 const socket = io.connect("http://localhost:3001")
 
 function App() {
@@ -32,6 +34,7 @@ const joinRoom=() =>{
         value="submit"
         onClick={joinRoom}
         />
+    <Chats socket={socket} username={username} room={room}/>
     </div>
   );
 }
