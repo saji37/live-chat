@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-function Chats({socket, username, room}) {
+function Chat({socket, username, room}) {
   const [currentMessage, setCurrentMessage] =useState('')
   const sendMessage = async() =>{
     if (currentMessage !== ""){
@@ -22,6 +22,7 @@ useEffect(() => {
     console.log(data)
   })
 }, [socket]);
+
   return (
     <div>
       <div className='chat-header'>
@@ -40,4 +41,4 @@ useEffect(() => {
   )
 }
 
-export default Chats
+export default Chat
